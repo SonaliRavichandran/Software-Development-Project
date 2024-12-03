@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            background-image: url("{% static 'images/pic9.jpeg' %}"); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        /* Create Event Page Styles */
+        .create-event-container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .create-event-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .create-event-container input[type="text"],
+        .create-event-container input[type="date"],
+        .create-event-container button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .create-event-container button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .create-event-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="create-event-container">
+        <h1>Create New Event</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br>
+
+            <label for="date">Date (YYYY-MM-DD):</label>
+            <input type="date" id="date" name="date" required><br>
+
+            <button type="submit">Create Event</button>
+        </form>
+    </div>
+</body>
+</html>

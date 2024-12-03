@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Subscription | Concert Booking</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            background-image: url("{% static 'images/pic15.jpeg' %}"); 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;
+            background-position: center;
+            color:white;
+            text-shadow: 2px 2px 5px,rgba(35, 17, 197, 0.7);
+        }
+         .navbar-brand img {
+            height: 60px;
+            margin-right: 10px;
+         }
+        .newsletter-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .subscribe-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .subscribe-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo and Heading -->
+        <div class="text-center my-4">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/logo.png' %}" alt="Logo"> <!-- Replace with your logo path -->
+                Concert Craze
+            </a>
+            <h1>Concert Booking Newsletter</h1>
+            <p>Stay updated with the latest concerts and events!</p>
+        </div>
+
+        <!-- Newsletter Subscription Form -->
+        <div class="newsletter-container mx-auto">
+            <h2 class="text-center mb-4">Subscribe to Our Newsletter</h2>
+            <form action="/subscribe/" method="POST">
+                {% csrf_token %}
+        
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <!-- Subscribe Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn subscribe-btn">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event List</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            background-image: url("{% static 'images/pic13.jpeg' %}"); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        /* Event List Page Styles */
+        .event-list-container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-list-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .event-list-container li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .event-list-container li:last-child {
+            border-bottom: none;
+        }
+
+        .event-list-container li strong {
+            font-size: 25px;
+            color: green;
+        }
+
+        .event-list-container li span {
+            font-size: 14px;
+            color: #555;
+        }
+    
+/* Button Style */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color:red;
+    color: white;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Hover Effect */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Focus Effect */
+.btn:focus {
+    outline: none;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="event-list-container">
+        <h1>Event List</h1>
+
+        <ul>
+            {% for event in events %}
+                <li>
+                    <strong>{{ event.name }}</strong><br>
+                    Location: {{ event.location }}<br>
+                    Date: {{ event.date }}<br>
+                </li>
+            {% endfor %}
+        </ul>
+            <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+
+    </div>
+</body>
+</html>
